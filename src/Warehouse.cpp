@@ -259,3 +259,30 @@ void Warehouse::PrintMemberPaidPerYearReport()
 	cout << right;
 
 }
+
+void Warehouse :: saveFile(ofstream oFile)
+{
+	Basic *memberPtr;
+	Date datePtr;
+
+	memberPtr = members.GetHead();
+
+	while(memberPtr != NULL)
+	{
+		//oFile <<   << datePtr.GetDay() << endl;
+		oFile << memberPtr->GetName() << endl;
+		oFile << memberPtr->GetId() << endl;
+
+		if(memberPtr->GetMemberType() == 0)
+		{
+			oFile << "BASIC";
+		}
+		else
+		{
+			oFile << "PREFERRED";
+		}
+		oFile << endl;
+		memberPtr = memberPtr->GetNext();
+	}
+
+}
